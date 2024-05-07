@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mailtrap.NET.SDK", "Mailtra
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{33BAD86C-D969-4B1D-9E66-DA087A5CC102}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mailtrap.CommandLine", "Mailtrap.CommandLine\Mailtrap.CommandLine.csproj", "{B3EA045A-D8A8-4B19-BD3B-D3E77290E852}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mailtrap.CommandLine", "Examples\Mailtrap.CommandLine\Mailtrap.CommandLine.csproj", "{19BD1B85-228D-4AB9-992E-F870B75AB6C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,16 +19,16 @@ Global
 		{A48C50BF-F190-4944-A318-0881488ED0ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A48C50BF-F190-4944-A318-0881488ED0ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A48C50BF-F190-4944-A318-0881488ED0ED}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B3EA045A-D8A8-4B19-BD3B-D3E77290E852}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B3EA045A-D8A8-4B19-BD3B-D3E77290E852}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B3EA045A-D8A8-4B19-BD3B-D3E77290E852}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B3EA045A-D8A8-4B19-BD3B-D3E77290E852}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19BD1B85-228D-4AB9-992E-F870B75AB6C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19BD1B85-228D-4AB9-992E-F870B75AB6C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19BD1B85-228D-4AB9-992E-F870B75AB6C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19BD1B85-228D-4AB9-992E-F870B75AB6C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{B3EA045A-D8A8-4B19-BD3B-D3E77290E852} = {33BAD86C-D969-4B1D-9E66-DA087A5CC102}
+		{19BD1B85-228D-4AB9-992E-F870B75AB6C0} = {33BAD86C-D969-4B1D-9E66-DA087A5CC102}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3904BFCE-6953-4EEB-AB82-C1CEFF26DE7E}
