@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mailtrap.NET.SDK", "Mailtrap.NET.SDK\Mailtrap.NET.SDK.csproj", "{A48C50BF-F190-4944-A318-0881488ED0ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mailtrap.NET.SDK", "Mailtrap.NET.SDK\Mailtrap.NET.SDK.csproj", "{A48C50BF-F190-4944-A318-0881488ED0ED}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{33BAD86C-D969-4B1D-9E66-DA087A5CC102}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mailtrap.CommandLine", "Examples\Mailtrap.CommandLine\Mailtrap.CommandLine.csproj", "{19BD1B85-228D-4AB9-992E-F870B75AB6C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mailtrap.NET.SDK.Unit.Tests", "tests\Mailtrap.NET.SDK.Unit.Tests\Mailtrap.NET.SDK.Unit.Tests.csproj", "{2EFD8DAC-0840-4E73-A906-8E96714D514C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +25,10 @@ Global
 		{19BD1B85-228D-4AB9-992E-F870B75AB6C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19BD1B85-228D-4AB9-992E-F870B75AB6C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19BD1B85-228D-4AB9-992E-F870B75AB6C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EFD8DAC-0840-4E73-A906-8E96714D514C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EFD8DAC-0840-4E73-A906-8E96714D514C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EFD8DAC-0840-4E73-A906-8E96714D514C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EFD8DAC-0840-4E73-A906-8E96714D514C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
