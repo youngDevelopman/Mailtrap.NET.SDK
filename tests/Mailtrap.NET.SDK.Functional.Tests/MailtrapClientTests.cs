@@ -61,7 +61,7 @@ namespace Mailtrap.NET.SDK.Functional.Tests
             using var textReader = new StreamReader($"Test files/Text_Test.txt");
 
 
-            var client = new MailtrapClient(_transactionalStreamConfiguration, _bulkStreamConfiguration, options);
+            var client = new MailtrapClient(_transactionalStreamConfiguration, _bulkStreamConfiguration);
             var email = new SendEmailRequest(
                     new ParticipantInfo(_from, "MailTrap demo"),
                     new List<ParticipantInfo>() { new ParticipantInfo(_to, "Nazar") },
@@ -73,7 +73,7 @@ namespace Mailtrap.NET.SDK.Functional.Tests
                 Html = "<b>Hello!<b>"
             };
             var cancellationToken = new CancellationTokenSource();
-            await client.SendEmailAsync(email, cancellationToken.Token);
+            await client.SendEmailAsync(email, options, cancellationToken.Token);
         }
     }
 }

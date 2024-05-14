@@ -4,30 +4,21 @@ using Mailtrap.NET.SDK.Models;
 
 namespace Mailtrap.NET.SDK
 {
-    public class MailtrapClient
+    public class MailtrapClient : IMailtrapClient
     {
-        private readonly SenderOptions _options;
         private readonly MailSenderFactory _senderFactory;
 
         public MailtrapClient(
-            TransactionalStreamConfiguration transactionalStreamConfiguration, 
-            BulkStreamConfiguration bulkStreamConfiguration) : this(transactionalStreamConfiguration, bulkStreamConfiguration, SenderOptions.TransactionalHttp) 
-        { 
-        }
-
-        public MailtrapClient(
             TransactionalStreamConfiguration transactionalStreamConfiguration,
-            BulkStreamConfiguration bulkStreamConfiguration,
-            SenderOptions senderOptions)
+            BulkStreamConfiguration bulkStreamConfiguration)
         {
             // We promote tight coupling here, because we do not want to allow client's code to create its own sender factories
             _senderFactory = new MailSenderFactory(transactionalStreamConfiguration, bulkStreamConfiguration);
-            _options = senderOptions;
         }
 
-        public async Task SendEmailAsync(SendEmailRequest email, CancellationToken cancellationToken)
+        public async Task SendEmailAsync(SendEmailRequest email, SenderOptions options = SenderOptions.TransactionalHttp, CancellationToken cancellationToken = default)
         {
-            IMailSender sender = _senderFactory.GetMailSender(_options);
+            IMailSender sender = _senderFactory.GetMailSender(options);
 
             await sender.SendAsync(email, cancellationToken);
         }

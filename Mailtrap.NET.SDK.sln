@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mailtrap.NET.SDK", "Mailtra
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mailtrap.NET.SDK.Unit.Tests", "tests\Mailtrap.NET.SDK.Unit.Tests\Mailtrap.NET.SDK.Unit.Tests.csproj", "{2EFD8DAC-0840-4E73-A906-8E96714D514C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mailtrap.NET.SDK.Functional.Tests", "tests\Mailtrap.NET.SDK.Functional.Tests\Mailtrap.NET.SDK.Functional.Tests.csproj", "{6A40853B-5489-4545-A0D5-B960A982E559}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mailtrap.NET.SDK.Functional.Tests", "tests\Mailtrap.NET.SDK.Functional.Tests\Mailtrap.NET.SDK.Functional.Tests.csproj", "{6A40853B-5489-4545-A0D5-B960A982E559}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mailtrap.NET.SDK.DependencyInjection.Extensions", "source\Mailtrap.NET.SDK.DependencyInjection.Extensions\Mailtrap.NET.SDK.DependencyInjection.Extensions.csproj", "{BACE7EEB-7923-4244-B425-A70C0E95269A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{6A40853B-5489-4545-A0D5-B960A982E559}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A40853B-5489-4545-A0D5-B960A982E559}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A40853B-5489-4545-A0D5-B960A982E559}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BACE7EEB-7923-4244-B425-A70C0E95269A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BACE7EEB-7923-4244-B425-A70C0E95269A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BACE7EEB-7923-4244-B425-A70C0E95269A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BACE7EEB-7923-4244-B425-A70C0E95269A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,7 +5,7 @@ using Mailtrap.NET.SDK.Models;
 
 namespace Mailtrap.NET.SDK
 {
-    public class MailtrapTestClient
+    public class MailtrapTestClient : IMailtrapTestClient
     {
         private readonly TestSenderOptions _senderOptions;
         private readonly TestMailSenderFactory _senderFactory;
@@ -17,7 +17,7 @@ namespace Mailtrap.NET.SDK
             _senderFactory = new TestMailSenderFactory(configuration);
         }
 
-        public async Task SendEmailAsync(SendEmailRequest email, CancellationToken cancellationToken)
+        public async Task SendEmailAsync(SendEmailRequest email, TestSenderOptions options = TestSenderOptions.Http, CancellationToken cancellationToken = default)
         {
             IMailSender sender = _senderFactory.GetMailSender(_senderOptions);
 
