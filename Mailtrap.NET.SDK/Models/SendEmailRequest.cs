@@ -1,4 +1,6 @@
-﻿namespace Mailtrap.NET.SDK.Models
+﻿using Mailtrap.NET.SDK.DataStructures;
+
+namespace Mailtrap.NET.SDK.Models
 {
     public class SendEmailRequest
     {
@@ -12,9 +14,15 @@
 
         public string Html { get; }
 
-        //public IReadOnlyCollection<object>  Attachments { get; }
+        public DisposableStreamReaderList Attachments { get; }
 
-        public SendEmailRequest(ParticipantInfo from, IReadOnlyCollection<ParticipantInfo> to, string subject, string text, string html, IReadOnlyCollection<string> attachments)
+        public SendEmailRequest(
+            ParticipantInfo from, 
+            IReadOnlyCollection<ParticipantInfo> to, 
+            string subject, 
+            string text, 
+            string html,
+            List<(StreamReader reader, string fileName)> attachments)
         {
             // Required parameters
             From = from ?? throw new ArgumentNullException($"{nameof(From)} parameter cannot be null");
@@ -22,7 +30,7 @@
             To = to ?? throw new ArgumentNullException($"{nameof(To)} parameter cannot be null");
             if(To.Count <= 0) 
             {
-                throw new ArgumentException($"The amount of recepinets has to be more or equal to one");
+                throw new ArgumentException($"The amount of recepients has to be more or equal to one");
             }
 
             Subject = subject ?? throw new ArgumentNullException($"{nameof(Subject)} parameter cannot be null");
@@ -30,14 +38,14 @@
 
             // Optional parameters
             Html = html;
-            //Attachments = attachments;
+            Attachments = DisposableStreamReaderList.FromList(attachments);
         }
     }
 
     public class ParticipantInfo
     {
-        public string Email { get; set; }
-        public string Name { get; set; }
+        public string Email { get; }
+        public string Name { get; }
 
         public ParticipantInfo(string email, string name)
         {

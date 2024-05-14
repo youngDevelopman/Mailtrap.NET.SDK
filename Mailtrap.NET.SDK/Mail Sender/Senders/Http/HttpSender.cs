@@ -1,7 +1,7 @@
 ﻿using Mailtrap.NET.SDK.Models;
 using System.Net.Http.Json;
 
-namespace Mailtrap.NET.SDK.MailSender.Senders
+namespace Mailtrap.NET.SDK.MailSender.Senders.Http
 {
     internal class HttpSender : IMailSender
     {
@@ -17,7 +17,7 @@ namespace Mailtrap.NET.SDK.MailSender.Senders
                 BaseAddress = new Uri("https://send.api.mailtrap.io"),
             };
 
-            httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer test");
+            httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer 83f3eebabcdbb72920219e8262a8c740");
             var result = await httpClient.PostAsJsonAsync("api/send", sendEmailRequest, cancellationToken);
             var message = await result.Content.ReadAsStringAsync();
         }

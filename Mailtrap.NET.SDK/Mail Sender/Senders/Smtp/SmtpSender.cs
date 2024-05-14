@@ -1,6 +1,6 @@
 ﻿using Mailtrap.NET.SDK.Models;
 
-namespace Mailtrap.NET.SDK.MailSender.Senders
+namespace Mailtrap.NET.SDK.MailSender.Senders.Smtp
 {
     internal class SmtpSender : IMailSender
     {
