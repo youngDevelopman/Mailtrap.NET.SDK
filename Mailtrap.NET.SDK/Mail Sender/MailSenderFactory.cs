@@ -4,7 +4,7 @@ using Mailtrap.NET.SDK.MailSender.Senders.Smtp;
 
 namespace Mailtrap.NET.SDK.MailSender
 {
-    internal class MailSenderFactory : IMailSenderFactory
+    internal class MailSenderFactory
     {
         public TransactionalStreamConfiguration TransactionalStreamConfiguration { get; }
         public BulkStreamConfiguration BulkStreamConfiguration { get; }
