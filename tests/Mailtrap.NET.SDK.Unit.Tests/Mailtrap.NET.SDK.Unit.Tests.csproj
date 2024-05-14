@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Mailtrap.NET.SDK\Mailtrap.NET.SDK.csproj" />
+    <ProjectReference Include="..\..\source\Mailtrap.NET.SDK\Mailtrap.NET.SDK.csproj" />
   </ItemGroup>
 
   <ItemGroup>

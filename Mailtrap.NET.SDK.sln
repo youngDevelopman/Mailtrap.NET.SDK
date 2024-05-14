@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mailtrap.NET.SDK", "Mailtrap.NET.SDK\Mailtrap.NET.SDK.csproj", "{A48C50BF-F190-4944-A318-0881488ED0ED}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mailtrap.NET.SDK.Unit.Tests", "tests\Mailtrap.NET.SDK.Unit.Tests\Mailtrap.NET.SDK.Unit.Tests.csproj", "{2EFD8DAC-0840-4E73-A906-8E96714D514C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mailtrap.NET.SDK.Functional.Tests", "tests\Mailtrap.NET.SDK.Functional.Tests\Mailtrap.NET.SDK.Functional.Tests.csproj", "{6A40853B-5489-4545-A0D5-B960A982E559}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mailtrap.NET.SDK.DependencyInjection.Extensions", "source\Mailtrap.NET.SDK.DependencyInjection.Extensions\Mailtrap.NET.SDK.DependencyInjection.Extensions.csproj", "{BACE7EEB-7923-4244-B425-A70C0E95269A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mailtrap.NET.SDK.DependencyInjection.Extensions", "source\Mailtrap.NET.SDK.DependencyInjection.Extensions\Mailtrap.NET.SDK.DependencyInjection.Extensions.csproj", "{BACE7EEB-7923-4244-B425-A70C0E95269A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mailtrap.NET.SDK", "source\Mailtrap.NET.SDK\Mailtrap.NET.SDK.csproj", "{AF42FC3F-24D0-4B48-8820-CFC7D2FC928D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{212106C6-6ED7-440D-B468-D6620F876D60}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A48C50BF-F190-4944-A318-0881488ED0ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A48C50BF-F190-4944-A318-0881488ED0ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A48C50BF-F190-4944-A318-0881488ED0ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A48C50BF-F190-4944-A318-0881488ED0ED}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2EFD8DAC-0840-4E73-A906-8E96714D514C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2EFD8DAC-0840-4E73-A906-8E96714D514C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2EFD8DAC-0840-4E73-A906-8E96714D514C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,9 +31,17 @@ Global
 		{BACE7EEB-7923-4244-B425-A70C0E95269A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BACE7EEB-7923-4244-B425-A70C0E95269A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BACE7EEB-7923-4244-B425-A70C0E95269A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF42FC3F-24D0-4B48-8820-CFC7D2FC928D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF42FC3F-24D0-4B48-8820-CFC7D2FC928D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF42FC3F-24D0-4B48-8820-CFC7D2FC928D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF42FC3F-24D0-4B48-8820-CFC7D2FC928D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2EFD8DAC-0840-4E73-A906-8E96714D514C} = {212106C6-6ED7-440D-B468-D6620F876D60}
+		{6A40853B-5489-4545-A0D5-B960A982E559} = {212106C6-6ED7-440D-B468-D6620F876D60}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3904BFCE-6953-4EEB-AB82-C1CEFF26DE7E}
