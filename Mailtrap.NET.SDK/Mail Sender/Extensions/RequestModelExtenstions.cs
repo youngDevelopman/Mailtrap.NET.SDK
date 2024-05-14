@@ -8,7 +8,7 @@ namespace Mailtrap.NET.SDK.MailSender.Extensions;
 
 internal static class RequestModelExtenstions
 {
-    public static async Task<SendEmailMailtrapRequestModel> MapToHttpCompliantModelAsync(this SendEmailRequest request)
+    internal static async Task<SendEmailMailtrapRequestModel> MapToHttpCompliantModelAsync(this SendEmailRequest request)
     {
         using var attachmentStreamReades = request.Attachments;
         
@@ -33,7 +33,7 @@ internal static class RequestModelExtenstions
         return mailtrapModel;
     }
 
-    public static async Task<MimeMessage> MapToSmtpCompliantModelAsync(this SendEmailRequest request)
+    internal static async Task<MimeMessage> MapToSmtpCompliantModelAsync(this SendEmailRequest request)
     {
         var message = new MimeMessage();
         message.From.Add(new MailboxAddress(request.From.Name, request.From.Email));
@@ -43,13 +43,12 @@ internal static class RequestModelExtenstions
             message.To.Add(new MailboxAddress(reciever.Name, reciever.Email));
         }
 
-        var body = new TextPart("plain")
-        {
-            Text = request.Text,
-        };
+        var bodyBuilder = new BodyBuilder();
+        bodyBuilder.TextBody = request.Text;
+        bodyBuilder.HtmlBody = request.Html;
 
         var multipart = new Multipart("mixed");
-        multipart.Add(body);
+        multipart.Add(bodyBuilder.ToMessageBody());
 
         using var attachmentStreamReades = request.Attachments;
         foreach (var attachment in attachmentStreamReades)
