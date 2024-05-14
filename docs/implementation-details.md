@@ -1,5 +1,5 @@
 # Implementation details and architecture approaches
-## SMTP and HTTP senders
+### SMTP and HTTP senders
 Regardless of which client is used - live or test, the email sending is done via HTTP or SMTP protocols, that is why the SDK has corresponding sender classes that would send email based on the configuration that is given.
 
 - [HttpSender.cs](https://github.com/youngDevelopman/Mailtrap.NET.SDK/blob/master/source/Mailtrap.NET.SDK/Mail%20Sender/Senders/Http/HttpSender.cs)
@@ -13,3 +13,16 @@ https://github.com/youngDevelopman/Mailtrap.NET.SDK/blob/e556b554224f9418b07071e
 
 ### SMTP sender
 SmtpSender uses [MailKit package](https://github.com/jstedfast/MailKit) to send emails. The library is also recommended by Microsoft since the standard SmtpClient is deprecated.
+
+### Sender factories
+Since both Smtp and Http senders are heavily used with a variety of different configurations it was decided to add factory methods to construct mail senders:
+- [MailSenderFactory](https://github.com/youngDevelopman/Mailtrap.NET.SDK/blob/master/source/Mailtrap.NET.SDK/Mail%20Sender/MailSenderFactory.cs)
+- [TestMailSenderFactory](https://github.com/youngDevelopman/Mailtrap.NET.SDK/blob/master/source/Mailtrap.NET.SDK/Mail%20Sender/TestMailSenderFactory.cs)
+
+### Client classes
+In order to send emails to Mailtrap client-side code can use [MailtrapClient](https://github.com/youngDevelopman/Mailtrap.NET.SDK/blob/master/source/Mailtrap.NET.SDK/MailtrapClient.cs) (to send live emails) or [TestMailtrapClient](https://github.com/youngDevelopman/Mailtrap.NET.SDK/blob/master/source/Mailtrap.NET.SDK/MailtrapTestClient.cs) (to send test emails).
+Both allow the client to define which transport method to use.
+
+### DisposableStreamReaderList
+Custom [DisposableStreamReaderList](https://github.com/youngDevelopman/Mailtrap.NET.SDK/blob/master/source/Mailtrap.NET.SDK/Data%20Structures/DisposableStreamReaderList.cs) class is used in [email request object](https://github.com/youngDevelopman/Mailtrap.NET.SDK/blob/master/source/Mailtrap.NET.SDK/Models/SendEmailRequest.cs) to store .NET Streams of attachment files.
+The main benefit of using this collection is that it implements Disposable pattern to dispose of all Streams that are contained within itself.
