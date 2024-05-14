@@ -59,7 +59,7 @@
 
             public string Type { get; }
 
-            public string Disposition { get; } = "Attachment";
+            public string Disposition { get; } = "attachment";
 
             public Attachment(string content, string fileName, string type)
             {

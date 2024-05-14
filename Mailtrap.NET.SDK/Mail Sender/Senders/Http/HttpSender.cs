@@ -1,4 +1,5 @@
-﻿using Mailtrap.NET.SDK.Models;
+﻿using Mailtrap.NET.SDK.Mail_Sender.Senders.Http;
+using Mailtrap.NET.SDK.Models;
 using System.Net.Http.Json;
 
 namespace Mailtrap.NET.SDK.MailSender.Senders.Http
@@ -18,7 +19,8 @@ namespace Mailtrap.NET.SDK.MailSender.Senders.Http
             };
 
             httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer 83f3eebabcdbb72920219e8262a8c740");
-            var result = await httpClient.PostAsJsonAsync("api/send", sendEmailRequest, cancellationToken);
+            var mailtrapRequestModel = await sendEmailRequest.MapToMailtrapModelAsync();
+            var result = await httpClient.PostAsJsonAsync("api/send", mailtrapRequestModel, cancellationToken);
             var message = await result.Content.ReadAsStringAsync();
         }
     }
