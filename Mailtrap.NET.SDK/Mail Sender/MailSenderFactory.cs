@@ -1,4 +1,5 @@
 ﻿using Mailtrap.NET.SDK.Configuration;
+using Mailtrap.NET.SDK.Exceptions;
 using Mailtrap.NET.SDK.MailSender.Senders.Http;
 using Mailtrap.NET.SDK.MailSender.Senders.Smtp;
 
@@ -56,7 +57,11 @@ namespace Mailtrap.NET.SDK.MailSender
 
         public IMailSender GetMailSender(SenderOptions options)
         {
-            return _sendersMap[options]();
+            if(_sendersMap.TryGetValue(options, out var mailSender))
+            {
+                return mailSender();
+            }
+            throw new SenderNotSupportedException($"{Enum.GetName(options)} is not supported");
         }
     }
 }
