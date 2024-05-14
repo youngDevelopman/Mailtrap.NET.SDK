@@ -2,7 +2,7 @@
 
 This repository is a limited implementation of [Mailtrap's sending API](https://api-docs.mailtrap.io/) for both live and test environments implemented by ```MailtrapClient```  and ```MailtrapTestClient``` respectively.
 
-To learn more about the implementation, please, read the following: [Implementation details and architecture approaches]([https://github.com/youngDevelopman/Mailtrap.NET.SDK](https://github.com/youngDevelopman/Mailtrap.NET.SDK/blob/master/docs/implementation-details.md))
+To learn more about the implementation, please, read the following: [Implementation details and architecture approaches](https://github.com/youngDevelopman/Mailtrap.NET.SDK/blob/master/docs/implementation-details.md)
 
 ### Send email to live environment
 To send email to live environment use  ```MailtrapClient```. There are four options of what underlying approach to use: ```TransactionalHttp```, ```TransactionalSmtp```, ```BulkHttp```, ```BulkSmtp```
