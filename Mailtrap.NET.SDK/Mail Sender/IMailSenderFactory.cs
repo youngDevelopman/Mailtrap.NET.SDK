@@ -2,6 +2,6 @@
 {
     internal interface IMailSenderFactory
     {
-        IMailSender GetMailSender();
+        IMailSender GetMailSender(SenderOptions options);
     }
 }

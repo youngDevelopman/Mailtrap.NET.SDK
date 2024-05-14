@@ -33,7 +33,7 @@ internal static class RequestModelExtenstions
         return mailtrapModel;
     }
 
-    public static MimeMessage MapToSmtpCompliantModel(this SendEmailRequest request)
+    public static async Task<MimeMessage> MapToSmtpCompliantModelAsync(this SendEmailRequest request)
     {
         var message = new MimeMessage();
         message.From.Add(new MailboxAddress(request.From.Name, request.From.Email));
@@ -50,14 +50,22 @@ internal static class RequestModelExtenstions
 
         var multipart = new Multipart("mixed");
         multipart.Add(body);
-        
+
         using var attachmentStreamReades = request.Attachments;
         foreach (var attachment in attachmentStreamReades)
         {
             var extenstion = Path.GetExtension(attachment.fileName);
+
+            /*  We do not need to use 'using' here because the stream that is used by MimeContent object
+                would be disposed by MimeContent object itself (it implements IDisposable).
+                Otherwise, the excpetion would be riased saying that the file was closed.
+            */
+            var memoryStream = new MemoryStream();
+            await attachment.reader.BaseStream.CopyToAsync(memoryStream);
+            memoryStream.Position = 0;
             var attachmentToAdd = new MimePart("text", extenstion)
             {
-                Content = new MimeContent(attachment.reader.BaseStream, ContentEncoding.Base64),
+                Content = new MimeContent(memoryStream, ContentEncoding.Base64),
                 ContentDisposition = new ContentDisposition(ContentDisposition.Attachment),
                 ContentTransferEncoding = ContentEncoding.Base64,
                 FileName = Path.GetFileName(attachment.fileName)

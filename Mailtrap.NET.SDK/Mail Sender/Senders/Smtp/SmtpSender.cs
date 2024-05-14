@@ -1,4 +1,5 @@
 ﻿using MailKit.Net.Smtp;
+using Mailtrap.NET.SDK.Configuration;
 using Mailtrap.NET.SDK.MailSender.Extensions;
 using Mailtrap.NET.SDK.Models;
 
@@ -6,21 +7,25 @@ namespace Mailtrap.NET.SDK.MailSender.Senders.Smtp
 {
     internal class SmtpSender : IMailSender
     {
-        public SmtpSender()
+        public string Host { get; }
+        public int Port { get; }
+        private readonly SmtpCredentials _credentials;
+        public SmtpSender(string host, int port, SmtpCredentials credentials)
         {
-            
+            Host = host;
+            Port = port;
+            _credentials = credentials;
         }
 
         public async Task SendAsync(SendEmailRequest sendEmailRequest, CancellationToken cancellationToken)
         {
-            var message = sendEmailRequest.MapToSmtpCompliantModel();
+            var message = await sendEmailRequest.MapToSmtpCompliantModelAsync();
 
             using (var client = new SmtpClient())
             {
-                await client.ConnectAsync("live.smtp.mailtrap.io", 587, MailKit.Security.SecureSocketOptions.StartTls, cancellationToken);
+                await client.ConnectAsync(Host, Port, MailKit.Security.SecureSocketOptions.StartTls, cancellationToken);
 
-                // Note: only needed if the SMTP server requires authentication
-                await client.AuthenticateAsync("api", "83f3eebabcdbb72920219e8262a8c740", cancellationToken);
+                await client.AuthenticateAsync(_credentials.User, _credentials.Password, cancellationToken);
 
                 await client.SendAsync(message, cancellationToken);
                 await client.DisconnectAsync(true, cancellationToken);
