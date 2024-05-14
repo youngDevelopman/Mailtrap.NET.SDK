@@ -58,7 +58,7 @@ internal static class RequestModelExtenstions
 
             /*  We do not need to use 'using' here because the stream that is used by MimeContent object
                 would be disposed by MimeContent object itself (it implements IDisposable).
-                Otherwise, the excpetion would be riased saying that the file was closed.
+                Otherwise, the exception would be riased saying that the file was closed.
             */
             var memoryStream = new MemoryStream();
             await attachment.reader.BaseStream.CopyToAsync(memoryStream);

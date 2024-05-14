@@ -7,24 +7,24 @@ namespace Mailtrap.NET.SDK.MailSender.Senders.Http
 {
     internal class HttpSender : IMailSender
     {
-        public string Host { get; }
+        public string Url { get; }
         private readonly HttpCredentials _credentials;
-        public HttpSender(string host, HttpCredentials credentials)
+        public HttpSender(string url, HttpCredentials credentials)
         {
-             Host = host;
-            _credentials = credentials;
+            Url = url ?? throw new ArgumentNullException($"{nameof(Url)} parameter cannot be null");
+            _credentials = credentials ?? throw new ArgumentNullException($"Credentials parameter cannot be null");
         }
 
         public async Task SendAsync(SendEmailRequest sendEmailRequest, CancellationToken cancellationToken)
         {
             var httpClient = new HttpClient()
             {
-                BaseAddress = new Uri($"https://{Host}"),
+                BaseAddress = new Uri(Url),
             };
 
             AddHeaders(httpClient);
             var mailtrapRequestModel = await sendEmailRequest.MapToHttpCompliantModelAsync();
-            var result = await httpClient.PostAsJsonAsync("api/send", mailtrapRequestModel, cancellationToken);
+            var result = await httpClient.PostAsJsonAsync(string.Empty, mailtrapRequestModel, cancellationToken);
             var message = await result.Content.ReadAsStringAsync();
         }
 

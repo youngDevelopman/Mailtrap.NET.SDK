@@ -12,9 +12,9 @@ namespace Mailtrap.NET.SDK.MailSender.Senders.Smtp
         private readonly SmtpCredentials _credentials;
         public SmtpSender(string host, int port, SmtpCredentials credentials)
         {
-            Host = host;
+            Host = host ?? throw new ArgumentNullException($"{nameof(Host)} parameter cannot be null");
+            _credentials = credentials ?? throw new ArgumentNullException($"Credentials parameter cannot be null");
             Port = port;
-            _credentials = credentials;
         }
 
         public async Task SendAsync(SendEmailRequest sendEmailRequest, CancellationToken cancellationToken)

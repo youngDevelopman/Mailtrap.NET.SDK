@@ -21,11 +21,11 @@ namespace Mailtrap.NET.SDK
             IMailSender sender;
             if(_senderOptions == TestSenderOptions.Http)
             {
-                sender = new HttpSender(_configuration.Url, _configuration.HttpCredentials);
+                sender = new HttpSender(_configuration.HttpConfiguration.Url, _configuration.HttpConfiguration.Credentials);
             }
             else
             {
-                sender = new SmtpSender(TestClientConfiguration.SMTP_HOST, TestClientConfiguration.SMTP_PORT, _configuration.SmtpCredentials);
+                sender = new SmtpSender(_configuration.SmtpConfiguration.Host, _configuration.SmtpConfiguration.Port, _configuration.SmtpConfiguration.Credentials);
             }
 
             await sender.SendAsync(email, cancellationToken);
