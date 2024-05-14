@@ -9,7 +9,7 @@ namespace Mailtrap.NET.SDK.Mail_Sender
     internal class TestMailSenderFactory
     {
         public TestClientConfiguration TestClientConfiguration { get; set; }
-        public TestMailSenderFactory(TestClientConfiguration configuration)
+        public TestMailSenderFactory(TestClientConfiguration configuration): this()
         {
             TestClientConfiguration = configuration;
         }
