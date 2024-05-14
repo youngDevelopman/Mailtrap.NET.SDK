@@ -12,7 +12,7 @@
         {
             if(httpCredentials != null)
             {
-                string url = $"https://{Constants.TRANSACTIONAL_HTTP_HOST}/send/api";
+                string url = $"https://{Constants.TRANSACTIONAL_HTTP_HOST}/api/send";
                 HttpConfiguration = new HttpConfiguration(url, httpCredentials);
             }
 

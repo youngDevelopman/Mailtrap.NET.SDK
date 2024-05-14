@@ -14,7 +14,7 @@ namespace Mailtrap.NET.SDK.Models
 
         public string Html { get; }
 
-        public DisposableStreamReaderList Attachments { get; }
+        public DisposableStreamReaderList Attachments { get; } = new DisposableStreamReaderList();
 
         public SendEmailRequest(
             ParticipantInfo from, 
@@ -38,7 +38,10 @@ namespace Mailtrap.NET.SDK.Models
 
             // Optional parameters
             Html = html;
-            Attachments = DisposableStreamReaderList.FromList(attachments);
+            if(attachments != null)
+            {
+                Attachments = DisposableStreamReaderList.FromList(attachments);
+            }
         }
     }
 
