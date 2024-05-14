@@ -1,23 +1,41 @@
-﻿using System.Security.Cryptography;
-
-namespace Mailtrap.NET.SDK.DataStructures
+﻿namespace Mailtrap.NET.SDK.DataStructures
 {
     /// <summary>
     /// Used for managing disposable items in the list.
     /// Disposes all items in the list automatically, preventing client code from producing memory leaks.
     /// </summary>
-    public class DisposableStreamReaderList: List<(StreamReader reader, string fileName)>, IDisposable
+    public class DisposableStreamReaderList : List<(StreamReader reader, string fileName)>, IDisposable
     {
+        private bool disposed = false;
+
         public DisposableStreamReaderList()
         {
         }
 
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+                    foreach (var item in this)
+                    {
+                        item.reader.Dispose();
+                    }
+                }
+                disposed = true;
+            }
+        }
+
         public void Dispose()
         {
-            foreach (var item in this)
-            {
-                item.reader.Dispose();
-            }
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        ~DisposableStreamReaderList()
+        {
+            Dispose(false);
         }
 
         public static DisposableStreamReaderList FromList(List<(StreamReader reader, string fileName)> list)

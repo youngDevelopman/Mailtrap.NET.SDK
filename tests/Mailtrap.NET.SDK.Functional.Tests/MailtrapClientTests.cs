@@ -1,7 +1,5 @@
 using Mailtrap.NET.SDK.Configuration;
 using Mailtrap.NET.SDK.DataStructures;
-using Mailtrap.NET.SDK.MailSender.Senders.Http;
-using Mailtrap.NET.SDK.MailSender.Senders.Smtp;
 using Mailtrap.NET.SDK.Models;
 using Microsoft.Extensions.Configuration;
 
