@@ -45,7 +45,7 @@ var email = new SendEmailRequest(
     Html = "<b>Hello!<b>"
 };
 var cancellationToken = new CancellationTokenSource();
-var options = TestSenderOptions.Http; // TransactionalHttp | TransactionalSmtp | BulkHttp | BulkSmtp
+var options = TestSenderOptions.Http; // Http | Smtp
 await client.SendEmailAsync(email, options, cancellationToken.Token);
 
 ```
