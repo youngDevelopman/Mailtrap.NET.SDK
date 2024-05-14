@@ -1,3 +1,4 @@
+using Mailtrap.NET.SDK.DataStructures;
 using Mailtrap.NET.SDK.MailSender.Extensions;
 using Mailtrap.NET.SDK.Models;
 using MimeKit;
@@ -18,9 +19,11 @@ namespace Mailtrap.NET.SDK.Unit.Tests
                 new ParticipantInfo("mailtrap@demomailtrap.com", "MailTrap demo"),
                 to,
                 "test email",
-                "sent from command line",
-                "<b>Hello!<b>",
-                new List<(StreamReader streamReader, string fileName)> { (htmlReader, "test.html"), (textReader, "text.txt") });
+                "sent from command line")
+            {
+                Attachments = DisposableStreamReaderList.FromList(new List<(StreamReader streamReader, string fileName)> { (htmlReader, "test.html"), (textReader, "text.txt") }),
+                Html = "<b>Hello!<b>"
+            };
 
             // Act
             var result = await email.MapToHttpCompliantModelAsync();
@@ -61,9 +64,11 @@ namespace Mailtrap.NET.SDK.Unit.Tests
                 new ParticipantInfo("mailtrap@demomailtrap.com", "MailTrap demo"),
                 to,
                 "test email",
-                "sent from command line",
-                "<b>Hello!<b>",
-                new List<(StreamReader streamReader, string fileName)> { (htmlReader, "test.html"), (textReader, "text.txt") });
+                "sent from command line")
+            {
+                Attachments = DisposableStreamReaderList.FromList(new List<(StreamReader streamReader, string fileName)> { (htmlReader, "test.html"), (textReader, "text.txt") }),
+                Html = "<b>Hello!<b>"
+            };
 
             // Act
             var result = await email.MapToSmtpCompliantModelAsync();

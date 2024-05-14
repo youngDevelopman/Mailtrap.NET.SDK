@@ -2,6 +2,7 @@
 {
     internal class SendEmailMailtrapRequestModel
     {
+        // Required
         public ParticipantInfo From { get; }
 
         public IReadOnlyCollection<ParticipantInfo> To { get; }
@@ -10,19 +11,17 @@
 
         public string Text { get; }
 
-        public string Html { get; }
+        //Optional
+        public string Html { get; init; }
 
-        public IReadOnlyCollection<Attachment> Attachments { get; set; }
+        public IReadOnlyCollection<Attachment> Attachments { get; init; }
 
         public SendEmailMailtrapRequestModel(
             ParticipantInfo from,
             IReadOnlyCollection<ParticipantInfo> to,
             string subject,
-            string text,
-            string html,
-            IReadOnlyCollection<Attachment> attachments)
+            string text)
         {
-            // Required parameters
             From = from ?? throw new ArgumentNullException($"{nameof(From)} parameter cannot be null");
 
             To = to ?? throw new ArgumentNullException($"{nameof(To)} parameter cannot be null");
@@ -33,10 +32,6 @@
 
             Subject = subject ?? throw new ArgumentNullException($"{nameof(Subject)} parameter cannot be null");
             Text = text ?? throw new ArgumentNullException($"{nameof(Text)} parameter cannot be null");
-
-            // Optional parameters
-            Html = html;
-            Attachments = attachments;
         }
 
         internal class ParticipantInfo

@@ -28,7 +28,11 @@ internal static class RequestModelExtenstions
         var from = new SendEmailMailtrapRequestModel.ParticipantInfo(request.From.Email, request.From.Name);
         var to = request.To.Select(x => new SendEmailMailtrapRequestModel.ParticipantInfo(x.Email, x.Name)).ToList();
 
-        var mailtrapModel = new SendEmailMailtrapRequestModel(from, to, request.Subject, request.Text, request.Html, attachments);
+        var mailtrapModel = new SendEmailMailtrapRequestModel(from, to, request.Subject, request.Text)
+        {
+            Attachments = attachments,
+            Html = request.Html,
+        };
 
         return mailtrapModel;
     }

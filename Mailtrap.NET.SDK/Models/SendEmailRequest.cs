@@ -4,6 +4,7 @@ namespace Mailtrap.NET.SDK.Models
 {
     public class SendEmailRequest
     {
+        // Required
         public ParticipantInfo From { get; }
 
         public IReadOnlyCollection<ParticipantInfo> To { get; }
@@ -12,19 +13,18 @@ namespace Mailtrap.NET.SDK.Models
 
         public string Text { get; }
 
-        public string Html { get; }
+        // Optional
 
-        public DisposableStreamReaderList Attachments { get; } = new DisposableStreamReaderList();
+        public string Html { get; init; }
+
+        public DisposableStreamReaderList Attachments { get; init; } = new DisposableStreamReaderList();
 
         public SendEmailRequest(
             ParticipantInfo from, 
             IReadOnlyCollection<ParticipantInfo> to, 
             string subject, 
-            string text, 
-            string html,
-            List<(StreamReader reader, string fileName)> attachments)
+            string text)
         {
-            // Required parameters
             From = from ?? throw new ArgumentNullException($"{nameof(From)} parameter cannot be null");
 
             To = to ?? throw new ArgumentNullException($"{nameof(To)} parameter cannot be null");
@@ -35,13 +35,6 @@ namespace Mailtrap.NET.SDK.Models
 
             Subject = subject ?? throw new ArgumentNullException($"{nameof(Subject)} parameter cannot be null");
             Text = text ?? throw new ArgumentNullException($"{nameof(Text)} parameter cannot be null");
-
-            // Optional parameters
-            Html = html;
-            if(attachments != null)
-            {
-                Attachments = DisposableStreamReaderList.FromList(attachments);
-            }
         }
     }
 

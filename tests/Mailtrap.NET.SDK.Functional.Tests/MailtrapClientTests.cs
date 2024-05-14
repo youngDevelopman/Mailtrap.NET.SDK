@@ -1,4 +1,5 @@
 using Mailtrap.NET.SDK.Configuration;
+using Mailtrap.NET.SDK.DataStructures;
 using Mailtrap.NET.SDK.MailSender.Senders.Http;
 using Mailtrap.NET.SDK.MailSender.Senders.Smtp;
 using Mailtrap.NET.SDK.Models;
@@ -67,9 +68,12 @@ namespace Mailtrap.NET.SDK.Functional.Tests
                     new ParticipantInfo(_from, "MailTrap demo"),
                     new List<ParticipantInfo>() { new ParticipantInfo(_to, "Nazar") },
                     "test email",
-                    "sent from command line",
-                    null,
-                    new List<(StreamReader streamReader, string fileName)> { (htmlReader, "test.html"), (textReader, "text.txt") });
+                    "sent from command line"
+                    )
+            {
+                Attachments = DisposableStreamReaderList.FromList(new List<(StreamReader streamReader, string fileName)> { (htmlReader, "test.html"), (textReader, "text.txt") }),
+                Html = "<b>Hello!<b>"
+            };
             var cancellationToken = new CancellationTokenSource();
             await client.SendEmailAsync(email, cancellationToken.Token);
         }
