@@ -1,4 +1,5 @@
 ﻿using Mailtrap.NET.SDK.Configuration;
+using Mailtrap.NET.SDK.Exceptions;
 using Mailtrap.NET.SDK.MailSender.Extensions;
 using Mailtrap.NET.SDK.Models;
 using System.Net.Http.Json;
@@ -25,7 +26,12 @@ namespace Mailtrap.NET.SDK.MailSender.Senders.Http
             AddHeaders(httpClient);
             var mailtrapRequestModel = await sendEmailRequest.MapToHttpCompliantModelAsync();
             var result = await httpClient.PostAsJsonAsync(string.Empty, mailtrapRequestModel, cancellationToken);
-            var message = await result.Content.ReadAsStringAsync();
+            
+            if (!result.IsSuccessStatusCode)
+            {
+                var message = await result.Content.ReadAsStringAsync();
+                throw new EmailSendingException($"Email sending over http has failed. Details: {message}");
+            }
         }
 
         private void AddHeaders(HttpClient httpClient)

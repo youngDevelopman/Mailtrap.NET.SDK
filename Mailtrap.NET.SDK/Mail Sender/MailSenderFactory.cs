@@ -43,13 +43,18 @@ namespace Mailtrap.NET.SDK.MailSender
                 {
                     SenderOptions.BulkHttp,
                     () => BulkStreamConfiguration?.HttpConfiguration != null ?
-                        new HttpSender(BulkStreamConfiguration.HttpConfiguration.Url, BulkStreamConfiguration.HttpConfiguration.Credentials)
+                        new HttpSender(
+                            BulkStreamConfiguration.HttpConfiguration.Url, 
+                            BulkStreamConfiguration.HttpConfiguration.Credentials)
                         : throw new ArgumentNullException($"Http credentials for bulk stream are not specified")
                 },
                 {
                     SenderOptions.BulkSmtp,
                     () => BulkStreamConfiguration?.SmtpConfiguration != null ?
-                        new SmtpSender(BulkStreamConfiguration.SmtpConfiguration.Host,BulkStreamConfiguration.SmtpConfiguration.Port, BulkStreamConfiguration.SmtpConfiguration.Credentials)
+                        new SmtpSender(
+                            BulkStreamConfiguration.SmtpConfiguration.Host, 
+                            BulkStreamConfiguration.SmtpConfiguration.Port, 
+                            BulkStreamConfiguration.SmtpConfiguration.Credentials)
                         : throw new ArgumentNullException($"Smtp credentials for bulk stream are not specified")
                 }
             };
