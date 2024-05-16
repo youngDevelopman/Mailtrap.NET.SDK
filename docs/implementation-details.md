@@ -35,4 +35,8 @@ All models either public (i.e. SendEmailRequest) or internal (i.e. SendEmailMail
 - Model has to validate itself
 
 Example: [SendEmailRequest.cs](https://github.com/youngDevelopman/Mailtrap.NET.SDK/blob/master/source/Mailtrap.NET.SDK/Models/SendEmailRequest.cs)
+
 Having such rules applied to all models would give us a better consistency in our code base, make easier for client code to use the SDK and for developers to extend the code base.
+
+### IMailtrapClient and IMailtrapTestClient interfaces
+Even though both clients are implemented by their own proprietary classes (MailtrapClient and TestMailtrapClient) we still need those interfaces in order to make the testing of the client code easier for the client code developers themself. Having these interfaces makes the unit testing much easier, because the client code can mock or stub the interfaces in the ways they want.
