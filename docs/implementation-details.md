@@ -26,3 +26,13 @@ Both allow the client to define which transport method to use.
 ### DisposableStreamReaderList
 Custom [DisposableStreamReaderList](https://github.com/youngDevelopman/Mailtrap.NET.SDK/blob/master/source/Mailtrap.NET.SDK/Data%20Structures/DisposableStreamReaderList.cs) class is used in [email request object](https://github.com/youngDevelopman/Mailtrap.NET.SDK/blob/master/source/Mailtrap.NET.SDK/Models/SendEmailRequest.cs) to store .NET Streams of attachment files.
 The main benefit of using this collection is that it implements Disposable pattern to dispose of all Streams that are contained within itself.
+
+###  Models' creation
+All models either public (i.e. SendEmailRequest) or internal (i.e. SendEmailMailtrapRequestModel) have to follow the rules:
+- Be immutable
+- Has to accept required parameters via constructor
+- Has to accept optional parameter via property (better use init keyword to achieve singleton-like behavior for properties)
+- Model has to validate itself
+
+Example: [SendEmailRequest.cs](https://github.com/youngDevelopman/Mailtrap.NET.SDK/blob/master/source/Mailtrap.NET.SDK/Models/SendEmailRequest.cs)
+Having such rules applied to all models would give us a better consistency in our code base, make easier for client code to use the SDK and for developers to extend the code base.
